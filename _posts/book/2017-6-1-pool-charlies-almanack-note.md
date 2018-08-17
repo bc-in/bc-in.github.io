@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 穷查理宝典-笔记
-tags: [other]
+category: 读书
+keywords: 穷查理宝典
 ---
 找出你最擅长的事情，然后持之以恒乐此不疲的去把它做好。
 

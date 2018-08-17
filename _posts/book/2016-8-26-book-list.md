@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 阅读书单
-tags: [random, other]
+category: 读书
+keywords: 书单
 ---
 # 2016  
 1. 李智慧. **大型网站技术架构: 核心原理与案例分析**. 电子工业出版社. 2013   

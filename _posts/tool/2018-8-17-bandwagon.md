@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Bandwagon 科学上网
-tags: [other]
+category: 工具
+keywords: bandwagon
 ---
 # 购买VPS
 [Bandwagon](https://bandwagonhost.com/aff.php?aff=35524)
