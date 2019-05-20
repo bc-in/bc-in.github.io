@@ -123,14 +123,17 @@ chmod +x /usr/local/bin/docker-compose
 ```
 
 1. 在运行中的docker容器中列出打开的套接字的方法
+
 由于使用DOCKER的时候，ESTABLISHED连接不会出现在netstat中:
-1. 查找docker的进程号 ：
+
+查找docker的进程号 ：
 ```
 docker inspect -f '{{.State.Pid}}' <containerid> 
 $ docker inspect -f '{{.State.Pid}}' 49b98b2fbad2
 1840
 ```
-2. 查看连接： 
+
+查看连接： 
 ```
 sudo nsenter -t <pid> -n netstat | grep ESTABLISHED
 $ nsenter -t 1840 -n netstat |grep ESTABLISHED
