@@ -64,5 +64,46 @@ net.core.default_qdisc = fq
 lsmod | grep bbr
 ```
 返回值有 tcp_bbr 模块即说明bbr已启动。
+
   
+# Install shadowsocks-libev by docker
+```
+docker run -d -p 56244:56244 -p 56244:56244/udp --name ss-libev -v /etc/shadowsocks-libev:/etc/shadowsocks-libev teddysun/shadowsocks-libev
+```
+
+# Install L2TP by docker
+
+1. l2tp
+```
+docker run -d --privileged -p 500:500/udp -p 4500:4500/udp --name l2tp --env-file /etc/l2tp.env -v /lib/modules:/lib/modules teddysun/l2tp
+```
+
+1. 开通防火墙
+```
+iptables -A INPUT  -p udp --dport 500 -j ACCEPT
+iptables -A INPUT  -p udp --dport 4500 -j ACCEPT
+iptables -A INPUT  -p 50 -j ACCEPT
+iptables -A INPUT  -p 51 -j ACCEPT
+iptables -A INPUT  -p udp -m policy --dir in --pol ipsec -m udp --dport 1701 -j ACCEPT
+service iptables save
+service iptables restart
+iptables -L -n
+```
+
+协议：UDP,端口500(用于IKE,用于管理加密密钥)
+协议：UDP,端口4500(用于IPSEC NAT-Traversal模式)
+协议：ESP,价值50(IPSEC)
+协议：AH,值51(对于IPSEC)
+此外,L2TP服务器使用端口1701,但不允许从外部对其进行连接.有一个特殊的防火墙规则,只允许此端口上的IPSEC安全流量入站.
+
+# 其他dockers命令
+1. 所有容器开机自启
+```
+docker update --restart=always $(docker ps -a -q)
+```
+
+1. docker日志查看
+```
+docker logs l2tp
+```
 
