@@ -68,7 +68,7 @@ lsmod | grep bbr
   
 # Install shadowsocks-libev by docker
 ```
-docker run -d -p 56244:56244 -p 56244:56244/udp --name ss-libev -v /etc/shadowsocks-libev:/etc/shadowsocks-libev teddysun/shadowsocks-libev
+docker run -d -p xx:xx -p xx:xx/udp --name ss-libev -v /etc/shadowsocks-libev:/etc/shadowsocks-libev teddysun/shadowsocks-libev
 ```
 
 # Install L2TP by docker
